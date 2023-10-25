@@ -1,0 +1,28 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h1{
+    text-align: right;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    padding: 10px;
+    font-style: italic;
+}
+
+h2 {
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: dark;
+    margin: 20px 0px;
+}
+
+td {
+    font-size: 12px;
+    vertical-align: top;
+    text-align: justify;
+    color: dark;
+}
