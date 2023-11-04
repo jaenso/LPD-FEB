@@ -31,20 +31,37 @@ CREATE TABLE `biaya` (
   `uang_harian` text NOT NULL,
   `updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `id_user` int(11) NOT NULL,
+  `id_laporan` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_biaya`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `biaya` */
 
-insert  into `biaya`(`id_biaya`,`materi_kegiatan`,`surat_tugas`,`surat_pd`,`tik_pesawat`,`penginapan`,`nota_taxi`,`uang_harian`,`updated`,`id_user`) values 
-(31,'KRS-TI-203030503084.pdf','KRS-TI-203030503084.pdf','TTD_Arief_Gunawan-removebg-preview.png','TTD_Arief_Gunawan-removebg-preview.png','Lembar Konsul 2023.docx','113-Article Text-313-1-10-20220904.pdf','274-Article Text-1303-1-10-20181206.pdf','2023-10-10 19:22:38',1),
-(32,'1.-jik-vol15-1-april-2021-1-8-yefrie.pdf','1.-jik-vol15-1-april-2021-1-8-yefrie.pdf','1.-jik-vol15-1-april-2021-1-8-yefrie.pdf','1.-jik-vol15-1-april-2021-1-8-yefrie.pdf','113-Article Text-313-1-10-20220904.pdf','113-Article Text-313-1-10-20220904.pdf','274-Article Text-1303-1-10-20181206.pdf','2023-10-10 19:27:37',1),
-(33,'8610-Article Text-8301-1-10-20210727.pdf','8610-Article Text-8301-1-10-20210727.pdf','wiac.info-pdf-buku-rpl-rosa-as-amp-m-salahuddin-pr_17c0ab952bd3cde4632360ae6c03e4e6.pdf','8610-Article Text-8301-1-10-20210727.pdf','wiac.info-pdf-buku-rpl-rosa-as-amp-m-salahuddin-pr_17c0ab952bd3cde4632360ae6c03e4e6.pdf','8610-Article Text-8301-1-10-20210727.pdf','wiac.info-pdf-buku-rpl-rosa-as-amp-m-salahuddin-pr_17c0ab952bd3cde4632360ae6c03e4e6.pdf','2023-10-13 23:52:24',1),
-(46,'wiac.info-pdf-buku-rpl-rosa-as-amp-m-salahuddin-pr_17c0ab952bd3cde4632360ae6c03e4e6.pdf','','','','','','','2023-10-14 00:41:48',0),
-(47,'wiac.info-pdf-buku-rpl-rosa-as-amp-m-salahuddin-pr_17c0ab952bd3cde4632360ae6c03e4e6.pdf','','','','','','','2023-10-14 00:41:58',0),
-(48,'Joshua Evan Savero_20302050344_Form Komitmen.pdf','','','','','','','2023-10-14 00:42:12',0),
-(49,'8610-Article Text-8301-1-10-20210727.pdf','','','','','','','2023-10-14 00:43:26',0),
-(50,'Laporan Perjalanan.pdf','','','','','','','2023-10-21 11:30:29',0);
+insert  into `biaya`(`id_biaya`,`materi_kegiatan`,`surat_tugas`,`surat_pd`,`tik_pesawat`,`penginapan`,`nota_taxi`,`uang_harian`,`updated`,`id_user`,`id_laporan`) values 
+(93,'MateriKegiatan.pdf','SuratTugas.pdf','SuratPD.pdf','TiketPesawat.pdf','Penginapan.pdf','NotaTaxi.pdf','UangHarian.pdf','2023-11-04 10:14:34',1,42),
+(94,'SuratPD.pdf','SuratTugas.pdf','SuratPD.pdf','TiketPesawat.pdf','Penginapan.pdf','NotaTaxi.pdf','UangHarian.pdf','2023-11-04 10:14:36',1,42);
+
+/*Table structure for table `iku_feb` */
+
+DROP TABLE IF EXISTS `iku_feb`;
+
+CREATE TABLE `iku_feb` (
+  `id_iku` int(11) NOT NULL AUTO_INCREMENT,
+  `jenis` varchar(245) DEFAULT NULL,
+  PRIMARY KEY (`id_iku`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `iku_feb` */
+
+insert  into `iku_feb`(`id_iku`,`jenis`) values 
+(1,'IKU 1: Lulusan mendapat pekerjaan yang layak'),
+(2,'IKU 2: Mahasiswa mendapat pengalaman di luar kampus'),
+(3,'IKU 3: Dosen berkegiatan di luar kampus'),
+(4,'IKU 4: Praktisi mengajar di dalam kampus'),
+(5,'IKU 5: Hasil kerja dosen digunakan oleh masyarakat'),
+(6,'IKU 6: Program studi bekerjasama dengan mitra kelas dunia'),
+(7,'IKU 7: Kelas yang kolaboratif dan partisipatif'),
+(8,'IKU 8: Program studi berstandar internasional');
 
 /*Table structure for table `instansi` */
 
@@ -77,37 +94,20 @@ CREATE TABLE `laporan` (
   `tempat_tujuan` varchar(100) NOT NULL,
   `no_surat_tugas` varchar(500) NOT NULL,
   `sumber_dana` varchar(500) NOT NULL,
-  `nama_yang_ditugaskan` varchar(500) NOT NULL,
-  `relevansi_iku` varchar(500) NOT NULL,
-  `relevansi_akreditasi` varchar(500) NOT NULL,
-  `relevansi_umum` varchar(500) NOT NULL,
-  `ringkasan_kunjungan` varchar(500) NOT NULL,
-  `simpulan` varchar(500) NOT NULL,
+  `nama_yang_ditugaskan` text NOT NULL,
+  `id_iku` int(11) NOT NULL,
+  `relevansi_akreditasi` text NOT NULL,
+  `relevansi_umum` text NOT NULL,
+  `ringkasan_kunjungan` text NOT NULL,
+  `simpulan` text NOT NULL,
   `id_user` int(11) NOT NULL,
   PRIMARY KEY (`id_laporan`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `laporan` */
 
-insert  into `laporan`(`id_laporan`,`tgl_kunjungan`,`tgl_selesai`,`tempat_tujuan`,`no_surat_tugas`,`sumber_dana`,`nama_yang_ditugaskan`,`relevansi_iku`,`relevansi_akreditasi`,`relevansi_umum`,`ringkasan_kunjungan`,`simpulan`,`id_user`) values 
-(29,'2023-10-10','2023-10-10','aa','aa','aa','aa','IKU 3: Dosen berkegiatan di luar kampus','aa','aa','aa','aa',1),
-(30,'2023-10-10','2023-10-10','qq','qq','qq','qq','IKU 1: Lulusan mendapat pekerjaan yang layak','qq','qq','qq','qq',1),
-(31,'2023-10-10','2023-10-10','11','11','11','11','IKU 8: Program studi berstandar internasional','11','11','11','11',1),
-(32,'2023-10-12','2023-10-12','QQ','QQ','QQ','QQ','IKU 8: Program studi berstandar internasional','QQ','QQ','QQ','QQ',1),
-(33,'2023-10-14','2023-10-14','1','1','1','1','IKU 3: Dosen berkegiatan di luar kampus','1','1','1','1',1);
-
-/*Table structure for table `pdf_files` */
-
-DROP TABLE IF EXISTS `pdf_files`;
-
-CREATE TABLE `pdf_files` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `file_name` varchar(255) DEFAULT NULL,
-  `file_location` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-/*Data for the table `pdf_files` */
+insert  into `laporan`(`id_laporan`,`tgl_kunjungan`,`tgl_selesai`,`tempat_tujuan`,`no_surat_tugas`,`sumber_dana`,`nama_yang_ditugaskan`,`id_iku`,`relevansi_akreditasi`,`relevansi_umum`,`ringkasan_kunjungan`,`simpulan`,`id_user`) values 
+(42,'2023-10-31','2023-11-04','Universitas Palangka Raya, Palangka Raya, Kalimantan Tengah','KH1941AM AE','MAHASISWA','staff, Sri Yuni, SE., M.Si',4,'1. Mahasiswa mampu bersaing dan mendapat pengakuan di tingkat internasional<br> 2. Proses pembelajaran memenuhi standar internasional<br> 3. Program studi memiliki daya saing internasional<br> 4. Peningkatan kualitas capaian pemebelajaran (CPL)<br> 5. Peningkatan komptensi/profil lulusan','asdasdad','Kunjungan kerja ke Fakultas Ekonomi dan Bisnis Universitas Brawijaya Malang merupakan benchmarking untuk mempersiapkan kelas dengan bahasa pengantar bahasa Inggris. Di FEB UB, international undergraduate program (IUP) dimulai sejak tahun 2007. Kelas IUP ini dipersiapkan kurang lebih selama 1 tahun dan dikelola di bawah departemen masing-masing program. Saat ini IUP UB ada untuk tiga program studi, yaitu akuntansi, manajemen, dan ekonomi keuangan dan perbankan. Daya tampung mahasiswa IUP dibatasi hanya 30 orang per program studi. Untuk menjadi mahasiswa di IUP, mahasiswa dituntut untuk dapat berbicara bahasa Inggris secara aktif dan memiliki skor minimal TOEFL 525 dan IELTS 5 (saat lulus). Dalam rangka meningkatkan kualitas proses pembelajaran, IUP bekerja sama dengan beberapa universitas luar negeri dalam menyusun kurikulumnya sehingga mahasiswa akan mendapatkan pengalaman belajar di dalam dan luar negeri, baik itu dalam bentuk exchange, double degrees, internship, dan summer school. Saat ini, kurikulum IUP dan program reguler dibuat sama sehingga yang menjadi pembeda antara mahasiswa IUP dan regular adalah mulai angkatan 2023, mahasiswa diminta untuk sertifikasi luar negeri.','asdasdasdads',1);
 
 /*Table structure for table `semua_laporan` */
 
@@ -117,18 +117,16 @@ CREATE TABLE `semua_laporan` (
   `id_semua_laporan` int(11) NOT NULL AUTO_INCREMENT,
   `id_laporan` int(11) NOT NULL,
   `id_biaya` int(11) NOT NULL,
-  `no_surat_tugas` int(11) NOT NULL,
-  `Tempat Tujuan` varchar(500) NOT NULL,
-  `tanggal_kunjungan` date NOT NULL,
-  `tanggal_selesai` date NOT NULL,
   `updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `file_laporanpd` varchar(256) DEFAULT NULL,
+  `file_biayapd` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`id_semua_laporan`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `semua_laporan` */
 
-insert  into `semua_laporan`(`id_semua_laporan`,`id_laporan`,`id_biaya`,`no_surat_tugas`,`Tempat Tujuan`,`tanggal_kunjungan`,`tanggal_selesai`,`updated`) values 
-(1,0,0,0,'','2023-10-14','0000-00-00','2023-10-31 11:53:27');
+insert  into `semua_laporan`(`id_semua_laporan`,`id_laporan`,`id_biaya`,`updated`,`file_laporanpd`,`file_biayapd`) values 
+(8,42,93,'2023-11-04 11:40:08','MateriKegiatan.pdf','NotaTaxi.pdf');
 
 /*Table structure for table `user` */
 
@@ -149,7 +147,6 @@ CREATE TABLE `user` (
 insert  into `user`(`id_user`,`nama`,`username`,`password`,`level`,`updated`) values 
 (1,'Arief','arief','arief','user','2023-10-01 16:22:15'),
 (2,'admin','admin','admin','admin','2023-10-01 16:30:29'),
-(4,'staff','staff','staff','staff','2023-10-13 22:40:05'),
 (5,'Dr. Agus Satrya, SE., M.Si.','dosen1','dosen1','user','2023-10-15 07:00:23'),
 (6,'Sri Yuni, SE., M.Si','dosen2','dosen2','user','2023-10-15 07:00:30'),
 (7,'Ade Yuniati,  SE., M.Sc.','dosen3','dosen3','user','2023-10-15 07:01:26');
