@@ -76,7 +76,7 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
                       <td><?php echo $row['tgl_kunjungan']; ?></td>
                       <td><b><?php echo $row['tgl_selesai']; ?></b></td>
                       <td>
-                        <a href="../Cetak/cetak-semualaporan.php?id_semua_laporan=<?php echo $row['id_semua_laporan']; ?>" class="btn btn-warning nav-icon fas fa-print" title="Cetak Data Laporan Perjalanan Dinas"></a>
+                        <a href="../MergePDF/setasign/mergeSemuaLaporanPD.php?id_semua_laporan=<?php echo $row['id_semua_laporan']; ?>" class="btn btn-info nav-icon fas fa-print" title="Detail"></a>
                       </td>
                     </tr>
                   <?php } ?>

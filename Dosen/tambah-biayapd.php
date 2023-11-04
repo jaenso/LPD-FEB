@@ -57,13 +57,13 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
 
                     <div class="col-lg-6">
                       <label>Materi Kegiatan</label>
-                      <input type="file" accept=".pdf" class="form-control" name="materi_kegiatan" required="required"></textarea>
+                      <input type="file" accept=".pdf" class="form-control" name="materi_kegiatan" required="required">
                       <span class="text-danger"> *Masukkan File Surat (Format yang diterima : .pdf,)</span>
                     </div>
 
                     <div class="col-lg-6">
                       <label>Penginapan</label>
-                      <input type="file" accept=".pdf" class="form-control" name="penginapan" required="required"></textarea>
+                      <input type="file" accept=".pdf" class="form-control" name="penginapan" required="required">
                       <span class="text-danger"> *Masukkan File Surat (Format yang diterima : .pdf,)</span>
                     </div>
                   </div>
@@ -74,14 +74,14 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
 
                     <div class="col-lg-6">
                       <label>Surat Tugas</label>
-                      <input type="file" accept=".pdf" class="form-control" name="surat_tugas" required="required"></textarea>
+                      <input type="file" accept=".pdf" class="form-control" name="surat_tugas" required="required">
                       <span class="text-danger"> *Masukkan File Surat (Format yang diterima : .pdf,)</span>
                     </div>
 
 
                     <div class="col-lg-6">
                       <label>Nota Taxi</label>
-                      <input type="file" accept=".pdf" class="form-control" name="nota_taxi" required="required"></textarea>
+                      <input type="file" accept=".pdf" class="form-control" name="nota_taxi" required="required">
                       <span class="text-danger"> *Masukkan File Surat (Format yang diterima : .pdf,)</span>
                     </div>
 
@@ -93,13 +93,13 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
 
                     <div class="col-lg-6">
                       <label>Surat Perjalanan Dinas</label>
-                      <input type="file" accept=".pdf" class="form-control" name="surat_pd" required="required"></textarea>
+                      <input type="file" accept=".pdf" class="form-control" name="surat_pd" required="required">
                       <span class="text-danger"> *Masukkan File Surat (Format yang diterima : .pdf,)</span>
                     </div>
 
                     <div class="col-lg-6">
                       <label>Uang Harian</label>
-                      <input type="file" accept=".pdf" class="form-control" name="uang_harian" required="required"></textarea>
+                      <input type="file" accept=".pdf" class="form-control" name="uang_harian" required="required">
                       <span class="text-danger"> *Masukkan File Surat (Format yang diterima : .pdf,)</span>
                     </div>
 
@@ -111,11 +111,11 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
 
                     <div class="col-lg-6">
                       <label>Tiket Pesawat</label>
-                      <input type="file" accept=".pdf" class="form-control" name="tik_pesawat" required="required"></textarea>
+                      <input type="file" accept=".pdf" class="form-control" name="tik_pesawat" required="required">
                       <span class="text-danger"> *Masukkan File Surat (Format yang diterima : .pdf,)</span>
                     </div>
 
-                    <input type="hidden" class="form-control" name="id_user" value="<?php echo $id_user ?>"></textarea>
+                    <input type="hidden" class="form-control" name="id_user" value="<?php echo $id_user ?>">
 
                   </div>
                 </div>

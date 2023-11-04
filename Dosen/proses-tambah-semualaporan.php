@@ -2,14 +2,18 @@
 include "../config/koneksi.php";
 $id_laporan          = $_POST['id_laporan'];
 $id_biaya            = $_POST['id_biaya'];
-$lokasi_file1 = $_FILES['file_laporan']['tmp_name'];
-$nama_file1 = $_FILES['file_laporan']['name'];
-$ukuran1 = $_FILES['file_laporan']['size'];
+$lokasi_file2 = $_FILES['file_laporanpd']['tmp_name'];
+$nama_file2 = $_FILES['file_laporanpd']['name'];
+$ukuran2 = $_FILES['file_laporanpd']['size'];
+$lokasi_file3 = $_FILES['file_biayapd']['tmp_name'];
+$nama_file3 = $_FILES['file_biayapd']['name'];
+$ukuran3 = $_FILES['file_biayapd']['size'];
 
-move_uploaded_file($lokasi_file1, '../laporan/' . $nama_file1);
+move_uploaded_file($lokasi_file2, '../laporan/' . $nama_file2);
+move_uploaded_file($lokasi_file3, '../laporan/' . $nama_file3);
 
-$query = "INSERT INTO semua_laporan(file_laporan, id_laporan, id_biaya) VALUES 
-('$nama_file1', '$id_laporan', '$id_biaya')";
+$query = "INSERT INTO semua_laporan(file_laporanpd, file_biayapd, id_laporan, id_biaya) VALUES 
+('$nama_file2','$nama_file3', '$id_laporan', '$id_biaya')";
 
 $hasil = mysqli_query($koneksi, $query);
 if ($hasil) {

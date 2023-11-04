@@ -54,7 +54,8 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
                                             <select class="select2" name="id_laporan" style="width: 100%;" required>
                                                 <option value="">Pilih Laporan PD</option>
                                                 <?php
-                                                $query = "SELECT * FROM laporan";
+                                                $id_user = $_SESSION['id_user'];
+                                                $query = "SELECT * FROM laporan WHERE id_user = '$id_user'";
                                                 $result = mysqli_query($koneksi, $query);
                                                 while ($row = mysqli_fetch_assoc($result)) {
                                                     echo '<option value="' . $row['id_laporan'] . '">' . $row['no_surat_tugas'] . '</option>';
@@ -67,7 +68,7 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
                                             <select class="select2" name="id_biaya" style="width: 100%;" required>
                                                 <option value="">Pilih Data Surat Pertanggung Jawaban</option>
                                                 <?php
-                                                $query = "SELECT * FROM biaya";
+                                                $query = "SELECT * FROM biaya WHERE id_user = '$id_user'";
                                                 $result = mysqli_query($koneksi, $query);
                                                 while ($row = mysqli_fetch_assoc($result)) {
                                                     echo '<option value="' . $row['id_biaya'] . '">' . $row['surat_tugas'] . '</option>';
@@ -80,8 +81,13 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <label>File Laporan PD</label>
-                                            <input type="file" accept=".pdf" class="form-control" name="file_laporan" required="required"></textarea>
+                                            <label>File Laporan Perjalanan Desa</label>
+                                            <input type="file" accept=".pdf" class="form-control" name="file_laporanpd" required="required">
+                                            <span class="text-danger"> *Masukkan File Surat (Format yang diterima : .pdf,)</span>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label>File Biaya Perjalanan Dinas</label>
+                                            <input type="file" accept=".pdf" class="form-control" name="file_biayapd" required="required">
                                             <span class="text-danger"> *Masukkan File Surat (Format yang diterima : .pdf,)</span>
                                         </div>
                                     </div>
