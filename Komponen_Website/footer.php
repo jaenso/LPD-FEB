@@ -15,30 +15,6 @@
   </div>
   <!-- ./wrapper -->
 
-
-  <script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js"></script>
-  <script>
-    ClassicEditor
-      .create(document.querySelector('#isi1'))
-      .catch(error => {
-        console.error(error);
-      });
-    ClassicEditor
-      .create(document.querySelector('#isi2'))
-      .catch(error => {
-        console.error(error);
-      });
-    ClassicEditor
-      .create(document.querySelector('#isi3'))
-      .catch(error => {
-        console.error(error);
-      });
-    ClassicEditor
-      .create(document.querySelector('#isi4'))
-      .catch(error => {
-        console.error(error);
-      });
-  </script>
   <!-- jQuery -->
   <script src="../Assets_Halaman/plugins/jquery/jquery.min.js"></script>
   <!-- jQuery UI 1.11.4 -->
@@ -93,6 +69,13 @@
         "autoWidth": false,
         "responsive": true,
       });
+    });
+  </script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('.select2').select2();
     });
   </script>
   </body>

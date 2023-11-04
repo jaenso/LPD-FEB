@@ -84,17 +84,16 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
 
                     <div class="col-lg-6">
                       <label>Relevansi IKU FEB UPR (Value)</label>
-                      <select class="form-control" name="relevansi_iku" required="required">
+                      <select class="select2" name="relevansi_iku" style="width: 100%;" required>
                         <option value="">Pilih Relevansi IKU</option>
-                        <option value="IKU 1: Lulusan mendapat pekerjaan yang layak">1) Lulusan mendapat pekerjaan yang layak</option>
-                        <option value="IKU 2: Mahasiswa mendapat pengalaman di luar kampus">2) Mahasiswa mendapat pengalaman di luar kampus</option>
-                        <option value="IKU 3: Dosen berkegiatan di luar kampus">3) Dosen berkegiatan di luar kampus</option>
-                        <option value="IKU 4: Praktisi mengajar di dalam kampus">4) Praktisi mengajar di dalam kampus</option>
-                        <option value="IKU 5: Hasil kerja dosen digunakan oleh masyarakat">5) Hasil kerja dosen digunakan oleh masyarakat</option>
-                        <option value="IKU 6: Program studi bekerjasama dengan mitra kelas dunia">6) Program studi bekerjasama dengan mitra kelas dunia</option>
-                        <option value="IKU 7: Kelas yang kolaboratif dan partisipatif">7) Kelas yang kolaboratif dan partisipatif</option>
-                        <option value="IKU 8: Program studi berstandar internasional">8) Program studi berstandar internasional</option>
-                        <!-- Tambahkan lebih banyak pilihan sesuai kebutuhan -->
+                        <?php
+                        $query = "SELECT * FROM iku_feb";
+                        $result = mysqli_query($koneksi, $query);
+                        while ($row = mysqli_fetch_assoc($result)) {
+                          $selected = ($row['id_iku'] == $relevansi_iku) ? 'selected' : '';
+                          echo '<option value="' . $row['id_iku'] . '" ' . $selected . '>' . $row['jenis'] . '</option>';
+                        }
+                        ?>
                       </select>
                     </div>
 
@@ -106,12 +105,12 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
 
                     <div class="col-lg-6">
                       <label>Tanggal Selesai</label>
-                      <input type="date" class="form-control" name="tgl_selesai" value="<?php echo $tempat_tujuan; ?>">
+                      <input type="date" class="form-control" name="tgl_selesai" value="<?php echo $tgl_selesai; ?>">
                     </div>
 
                     <div class="col-lg-6">
                       <label>Relevansi Akreditasi Lamemba (Value)</label>
-                      <textarea name="relevansi_akreditasi" class="form-control" rows="10" id="isi1"><?php echo $relevansi_akreditasi; ?></textarea>
+                      <input type="text" name="relevansi_akreditasi" class="form-control" value="<?php echo $relevansi_akreditasi; ?>">
                     </div>
 
                   </div>
@@ -122,12 +121,12 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
 
                     <div class="col-lg-6">
                       <label>Tempat Tujuan</label>
-                      <input type="text" class="form-control" name="tempat_tujuan" value="<?php echo $no_surat_tugas; ?>">
+                      <input type="text" class="form-control" name="tempat_tujuan" value="<?php echo $tempat_tujuan; ?>">
                     </div>
 
                     <div class="col-lg-6">
                       <label>Relevansi Umum (Value)</label>
-                      <textarea name="relevansi_umum" class="form-control" rows="10" id="isi2"><?php echo $relevansi_umum; ?></textarea>
+                      <input type="text" name="relevansi_umum" class="form-control" value="<?php echo $relevansi_umum; ?>">
                     </div>
 
                   </div>
@@ -138,12 +137,12 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
 
                     <div class="col-lg-6">
                       <label>No Surat Tugas</label>
-                      <input type="text" class="form-control" name="no_surat_tugas" value="<?php echo $sumber_dana; ?>">
+                      <input type="text" class="form-control" name="no_surat_tugas" value="<?php echo $no_surat_tugas; ?>">
                     </div>
 
                     <div class="col-lg-6">
                       <label>Ringkasan Temuan</label>
-                      <textarea name="ringkasan_kunjungan" class="form-control" rows="10" id="isi3"><?php echo $ringkasan_kunjungan; ?></textarea>
+                      <input type="text" name="ringkasan_kunjungan" class="form-control" value="<?php echo $ringkasan_kunjungan; ?>">
                     </div>
 
                   </div>
@@ -154,12 +153,12 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
 
                     <div class="col-lg-6">
                       <label>Sumber Dana</label>
-                      <input type="text" class="form-control" name="sumber_dana" value="<?php echo $nama_yang_ditugaskan; ?>">
+                      <input type="text" class="form-control" name="sumber_dana" value="<?php echo $sumber_dana; ?>">
                     </div>
 
                     <div class="col-lg-6">
                       <label>Simpulan</label>
-                      <textarea name="simpulan" class="form-control" rows="10" id="isi4"><?php echo $simpulan; ?></textarea>
+                      <input type="text" name="simpulan" class="form-control" value="<?php echo $simpulan; ?>">
                     </div>
 
                   </div>
@@ -170,7 +169,15 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
 
                     <div class="col-lg-6">
                       <label>Nama Yang Ditugaskan</label>
-                      <input type="text" class="form-control" name="nama_yang_ditugaskan" value="<?php echo $nama_yang_ditugaskan; ?>">
+                      <select class="select2" name="nama_yang_ditugaskan[]" style="width: 100%;" multiple>
+                        <?php
+                        $query = "SELECT * FROM user";
+                        $result = mysqli_query($koneksi, $query);
+                        while ($row = mysqli_fetch_assoc($result)) {
+                          echo '<option value="' . $row['nama'] . '">' . $row['nama'] . '</option>';
+                        }
+                        ?>
+                      </select>
                     </div>
 
                   </div>

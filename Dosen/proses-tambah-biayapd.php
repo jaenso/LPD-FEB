@@ -1,9 +1,9 @@
 <?php
 include "../config/koneksi.php";
 
-$lokasi_file1 = $_FILES['surat_tugas']['tmp_name'];
-$nama_file1 = $_FILES['surat_tugas']['name'];
-$ukuran1 = $_FILES['surat_tugas']['size'];
+$lokasi_file1 = $_FILES['materi_kegiatan']['tmp_name'];
+$nama_file1 = $_FILES['materi_kegiatan']['name'];
+$ukuran1 = $_FILES['materi_kegiatan']['size'];
 $lokasi_file2 = $_FILES['surat_tugas']['tmp_name'];
 $nama_file2 = $_FILES['surat_tugas']['name'];
 $ukuran2 = $_FILES['surat_tugas']['size'];
@@ -45,4 +45,3 @@ if ($ukuran1 <= 6048000) {
 }
 
 echo "<script> alert('Proses Tambah Data Surat Pertanggung Jawaban Berhasil!'); window.location='kelola-biayapd.php';</script>";
-?>
