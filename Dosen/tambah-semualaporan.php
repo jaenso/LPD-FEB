@@ -90,6 +90,7 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
                                             <input type="file" accept=".pdf" class="form-control" name="file_biayapd" required="required">
                                             <span class="text-danger"> *Masukkan File Surat (Format yang diterima : .pdf,)</span>
                                         </div>
+                                        <input type="hidden" class="form-control" name="id_user" value="<?php echo $id_user ?>">
                                     </div>
                                 </div>
                             </div>

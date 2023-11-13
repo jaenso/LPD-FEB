@@ -8,12 +8,13 @@ $ukuran2 = $_FILES['file_laporanpd']['size'];
 $lokasi_file3 = $_FILES['file_biayapd']['tmp_name'];
 $nama_file3 = $_FILES['file_biayapd']['name'];
 $ukuran3 = $_FILES['file_biayapd']['size'];
+$id_user                = $_POST['id_user'];
 
 move_uploaded_file($lokasi_file2, '../laporan/' . $nama_file2);
 move_uploaded_file($lokasi_file3, '../laporan/' . $nama_file3);
 
-$query = "INSERT INTO semua_laporan(file_laporanpd, file_biayapd, id_laporan, id_biaya) VALUES 
-('$nama_file2','$nama_file3', '$id_laporan', '$id_biaya')";
+$query = "INSERT INTO semua_laporan(file_laporanpd, file_biayapd, id_laporan, id_biaya, id_user) VALUES 
+('$nama_file2','$nama_file3', '$id_laporan', '$id_biaya', '$id_user')";
 
 $hasil = mysqli_query($koneksi, $query);
 if ($hasil) {

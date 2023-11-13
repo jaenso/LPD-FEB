@@ -99,7 +99,6 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
                     </div>
                   </div>
                 </div>
-
               </div>
 
               <div class="card-footer">

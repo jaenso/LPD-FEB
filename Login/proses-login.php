@@ -59,15 +59,4 @@ $r=mysqli_fetch_array($cek3);
 		$_SESSION['level'] = "user";
 		// alihkan ke halaman dashboard pengurus
         echo"<script> alert ('Selamat Datang, Staff Fakultas Ekonomi Dan Bisnis.'); window.location = '../Dosen/index.php' </script>";
-    }else if($r['level']=="staff"){
-		// buat session login dan username
-		$_SESSION['id_user']=$r['id_user'];
-        $_SESSION['nama']=$r['nama'];
-        $_SESSION['username']=$r['username'];
-        $_SESSION['password']=$r['password'];
-        $_SESSION['status']='user';            
-		$_SESSION['level'] = "user";
-		// alihkan ke halaman dashboard pengurus
-        echo"<script> alert ('Selamat Datang, Staff Fakultas Ekonomi Dan Bisnis.'); window.location = '../Staff/index.php' </script>";
     }
-?>

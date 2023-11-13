@@ -98,6 +98,69 @@ if (empty($_SESSION['username']) && empty($_SESSION['PASSWORD'])) {
       </div>
     </div>
   </section>
+  <style>
+    .swiper-slide .card {
+      width: 37vh;
+      height: auto;
+      border-radius: 10px;
+      border: none;
+    }
+
+    .swiper-slide .card img {
+      width: 100%;
+      height: 25vh;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .swiper-slide .card-title {
+      color: black;
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .swiper-slide .card-title:hover {
+      color: blue;
+      cursor: pointer;
+    }
+
+    .swiper-slide .card-text {
+      font-size: 1rem;
+    }
+  </style>
+  <section class="content">
+    <div class="container-fluid">
+      <div class="card card-info">
+        <div class="card-header">
+          <h3 class="card-title"><b>Data-Data pada <i>Website</i>.</b></h3>
+        </div>
+        <div class="card-body">
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+              <?php
+              $sql = mysqli_query($koneksi, "SELECT * FROM berita");
+              while ($row = mysqli_fetch_array($sql)) {
+              ?>
+                <div class="swiper-slide">
+                  <div class="card">
+                    <img src="../berita/<?php echo $row['gambar'] ?>" class="card-img-top">
+                    <div class="card-body">
+                      <a class="card-title" href="detail-berita.php?id_berita=<?php echo $row['id_berita']; ?>""><?php echo $row['judul'] ?></a>
+                      <p class=" card-text"><?php echo $row['isi'] ?></p>
+                        <p class="card-text"><?php echo $row['tanggal'] ?></p>
+                    </div>
+                  </div>
+                </div>
+              <?php } ?>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 
 <?php

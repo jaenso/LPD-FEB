@@ -4,54 +4,42 @@ include "../Komponen_Website/header.php";
 include "../Komponen_Website/sidebar.php";
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 
-//jika tidak ada logn sebelumnya maka diarahkan ke login/php
 if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
   echo "<script> window.location = '../login/index.php' </script>";
-};
+}
 ?>
 
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
       <div class="small-box bg-info">
         <div class="inner">
-          <b>
-            <h4>DINAS SOSIAL PROVINSI KALIMANTAN TENGAH
-          </b></h4>
+          <h4><b>DINAS SOSIAL PROVINSI KALIMANTAN TENGAH</b></h4>
         </div>
       </div>
       <div class="row mb-2">
         <div class="col-sm-6">
-
-          <b>
-            <h1 class="m-0 text-dark">Kelola Data User
-          </b></h1>
+          <h1 class="m-0 text-dark"><b>Kelola Data User</b></h1>
           <p>Tempat Mengelola Data User untuk Pengguna <i>Website</i>.</p>
-          <p></p>
           <a href="tambah-user.php"><button type="submit" class="btn btn-info fas fa-edit"> Tambah Data User</button></a>
-        </div><!-- /.col -->
+        </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="index.php">Beranda</a></li>
             <li class="breadcrumb-item active">Kelola User</li>
           </ol>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
+        </div>
+      </div>
+    </div>
   </div>
-  <!-- /.content-header -->
 
-  <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
-      <!-- Small boxes (Stat box) -->
       <div class="row">
         <div class="col-md-12">
           <div class="card card-info">
             <div class="card-header">
-              <h3 class="card-title"><b>Data User</h3></b>
+              <h3 class="card-title"><b>Data User</b></h3>
             </div>
 
             <div class="card-body">
@@ -88,21 +76,16 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
                       </td>
                     </tr>
                   <?php } ?>
-
                 </tbody>
               </table>
-
             </div>
           </div>
         </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
+      </div>
+    </div>
   </section>
-  <!-- /.content -->
-
 </div>
-</div>
-<!-- /.content-wrapper -->
 
 <?php
-include "../Komponen_Website/footer.php"; ?>
+include "../Komponen_Website/footer.php";
+?>

@@ -50,11 +50,46 @@
   <!-- AdminLTE for demo purposes -->
   <script src="../Assets_Halaman/dist/js/demo.js"></script>
 
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="../Assets_Halaman/plugins/datatables/jquery.dataTables.js"></script>
   <script src="../Assets_Halaman/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
   <script src="../Assets_Halaman/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
   <script src="../Assets_Halaman/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false
+      },
+      speed: 1000,
+      breakpoints: {
+        320: {
+          slidesPerView: 2,
+          spaceBetween: 10
+        },
+        480: {
+          slidesPerView: 3,
+          spaceBetween: 20
+        },
+        768: {
+          slidesPerView: 4,
+          spaceBetween: 20
+        }
+      }
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('.select2').select2();
+    });
     $(function() {
       $("#example1").DataTable({
         "responsive": true,
@@ -71,13 +106,7 @@
       });
     });
   </script>
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-  <script>
-    $(document).ready(function() {
-      $('.select2').select2();
-    });
-  </script>
+
   </body>
 
   </html>

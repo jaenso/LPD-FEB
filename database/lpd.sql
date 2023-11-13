@@ -16,6 +16,28 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`lpd` /*!40100 DEFAULT CHARACTER SET utf
 
 USE `lpd`;
 
+/*Table structure for table `berita` */
+
+DROP TABLE IF EXISTS `berita`;
+
+CREATE TABLE `berita` (
+  `id_berita` int(11) NOT NULL AUTO_INCREMENT,
+  `judul` varchar(256) DEFAULT NULL,
+  `isi` text DEFAULT NULL,
+  `gambar` text DEFAULT NULL,
+  `tanggal` date DEFAULT NULL,
+  PRIMARY KEY (`id_berita`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `berita` */
+
+insert  into `berita`(`id_berita`,`judul`,`isi`,`gambar`,`tanggal`) values 
+(1,'BERITA BERHASIL','BERITA','3.jpg','2023-11-11'),
+(5,'12355','12345','2.jpg','2023-11-11'),
+(6,'1234','12345','2.jpg',NULL),
+(7,'1234','2131234','2.jpg',NULL),
+(8,'1234215','1231234123','2.jpg',NULL);
+
 /*Table structure for table `biaya` */
 
 DROP TABLE IF EXISTS `biaya`;
@@ -38,7 +60,6 @@ CREATE TABLE `biaya` (
 /*Data for the table `biaya` */
 
 insert  into `biaya`(`id_biaya`,`materi_kegiatan`,`surat_tugas`,`surat_pd`,`tik_pesawat`,`penginapan`,`nota_taxi`,`uang_harian`,`updated`,`id_user`,`id_laporan`) values 
-(93,'MateriKegiatan.pdf','SuratTugas.pdf','SuratPD.pdf','TiketPesawat.pdf','Penginapan.pdf','NotaTaxi.pdf','UangHarian.pdf','2023-11-04 10:14:34',1,42),
 (94,'SuratPD.pdf','SuratTugas.pdf','SuratPD.pdf','TiketPesawat.pdf','Penginapan.pdf','NotaTaxi.pdf','UangHarian.pdf','2023-11-04 10:14:36',1,42);
 
 /*Table structure for table `iku_feb` */
@@ -102,12 +123,14 @@ CREATE TABLE `laporan` (
   `simpulan` text NOT NULL,
   `id_user` int(11) NOT NULL,
   PRIMARY KEY (`id_laporan`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `laporan` */
 
 insert  into `laporan`(`id_laporan`,`tgl_kunjungan`,`tgl_selesai`,`tempat_tujuan`,`no_surat_tugas`,`sumber_dana`,`nama_yang_ditugaskan`,`id_iku`,`relevansi_akreditasi`,`relevansi_umum`,`ringkasan_kunjungan`,`simpulan`,`id_user`) values 
-(42,'2023-10-31','2023-11-04','Universitas Palangka Raya, Palangka Raya, Kalimantan Tengah','KH1941AM AE','MAHASISWA','staff, Sri Yuni, SE., M.Si',4,'1. Mahasiswa mampu bersaing dan mendapat pengakuan di tingkat internasional<br> 2. Proses pembelajaran memenuhi standar internasional<br> 3. Program studi memiliki daya saing internasional<br> 4. Peningkatan kualitas capaian pemebelajaran (CPL)<br> 5. Peningkatan komptensi/profil lulusan','asdasdad','Kunjungan kerja ke Fakultas Ekonomi dan Bisnis Universitas Brawijaya Malang merupakan benchmarking untuk mempersiapkan kelas dengan bahasa pengantar bahasa Inggris. Di FEB UB, international undergraduate program (IUP) dimulai sejak tahun 2007. Kelas IUP ini dipersiapkan kurang lebih selama 1 tahun dan dikelola di bawah departemen masing-masing program. Saat ini IUP UB ada untuk tiga program studi, yaitu akuntansi, manajemen, dan ekonomi keuangan dan perbankan. Daya tampung mahasiswa IUP dibatasi hanya 30 orang per program studi. Untuk menjadi mahasiswa di IUP, mahasiswa dituntut untuk dapat berbicara bahasa Inggris secara aktif dan memiliki skor minimal TOEFL 525 dan IELTS 5 (saat lulus). Dalam rangka meningkatkan kualitas proses pembelajaran, IUP bekerja sama dengan beberapa universitas luar negeri dalam menyusun kurikulumnya sehingga mahasiswa akan mendapatkan pengalaman belajar di dalam dan luar negeri, baik itu dalam bentuk exchange, double degrees, internship, dan summer school. Saat ini, kurikulum IUP dan program reguler dibuat sama sehingga yang menjadi pembeda antara mahasiswa IUP dan regular adalah mulai angkatan 2023, mahasiswa diminta untuk sertifikasi luar negeri.','asdasdasdads',1);
+(42,'2023-11-01','2023-11-04','Universitas Palangka Raya, Palangka Raya, Kalimantan Tengah','KH1941AM AE','MAHASISWA','staff, Sri Yuni, SE., M.Si',4,'1. Mahasiswa mampu bersaing dan mendapat pengakuan di tingkat internasional<br> 2. Proses pembelajaran memenuhi standar internasional<br> 3. Program studi memiliki daya saing internasional<br> 4. Peningkatan kualitas capaian pemebelajaran (CPL)<br> 5. Peningkatan komptensi/profil lulusan','asdasdad','Kunjungan kerja ke Fakultas Ekonomi dan Bisnis Universitas Brawijaya Malang merupakan benchmarking untuk mempersiapkan kelas dengan bahasa pengantar bahasa Inggris. Di FEB UB, international undergraduate program (IUP) dimulai sejak tahun 2007. Kelas IUP ini dipersiapkan kurang lebih selama 1 tahun dan dikelola di bawah departemen masing-masing program. Saat ini IUP UB ada untuk tiga program studi, yaitu akuntansi, manajemen, dan ekonomi keuangan dan perbankan. Daya tampung mahasiswa IUP dibatasi hanya 30 orang per program studi. Untuk menjadi mahasiswa di IUP, mahasiswa dituntut untuk dapat berbicara bahasa Inggris secara aktif dan memiliki skor minimal TOEFL 525 dan IELTS 5 (saat lulus). Dalam rangka meningkatkan kualitas proses pembelajaran, IUP bekerja sama dengan beberapa universitas luar negeri dalam menyusun kurikulumnya sehingga mahasiswa akan mendapatkan pengalaman belajar di dalam dan luar negeri, baik itu dalam bentuk exchange, double degrees, internship, dan summer school. Saat ini, kurikulum IUP dan program reguler dibuat sama sehingga yang menjadi pembeda antara mahasiswa IUP dan regular adalah mulai angkatan 2023, mahasiswa diminta untuk sertifikasi luar negeri.','asdasdasdads',1),
+(43,'2023-11-09','2023-11-09','123','123','123','Sri Yuni, SE., M.Si',2,'123','123','123','123',1),
+(44,'2023-11-10','2023-11-10','12355','12355','12355','Sri Yuni, SE., M.Si',4,'12355','12355','12355','12355',1);
 
 /*Table structure for table `semua_laporan` */
 
@@ -120,13 +143,16 @@ CREATE TABLE `semua_laporan` (
   `updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `file_laporanpd` varchar(256) DEFAULT NULL,
   `file_biayapd` varchar(256) DEFAULT NULL,
-  PRIMARY KEY (`id_semua_laporan`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id_user` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_semua_laporan`),
+  KEY `id_user` (`id_user`),
+  CONSTRAINT `semua_laporan_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `semua_laporan` */
 
-insert  into `semua_laporan`(`id_semua_laporan`,`id_laporan`,`id_biaya`,`updated`,`file_laporanpd`,`file_biayapd`) values 
-(8,42,93,'2023-11-04 11:40:08','MateriKegiatan.pdf','NotaTaxi.pdf');
+insert  into `semua_laporan`(`id_semua_laporan`,`id_laporan`,`id_biaya`,`updated`,`file_laporanpd`,`file_biayapd`,`id_user`) values 
+(8,42,93,'2023-11-09 23:18:49','MateriKegiatan.pdf','NotaTaxi.pdf',1);
 
 /*Table structure for table `user` */
 
@@ -145,7 +171,7 @@ CREATE TABLE `user` (
 /*Data for the table `user` */
 
 insert  into `user`(`id_user`,`nama`,`username`,`password`,`level`,`updated`) values 
-(1,'Arief','arief','arief','user','2023-10-01 16:22:15'),
+(1,'Arief1','arief','arief','user','2023-10-01 16:22:15'),
 (2,'admin','admin','admin','admin','2023-10-01 16:30:29'),
 (5,'Dr. Agus Satrya, SE., M.Si.','dosen1','dosen1','user','2023-10-15 07:00:23'),
 (6,'Sri Yuni, SE., M.Si','dosen2','dosen2','user','2023-10-15 07:00:30'),

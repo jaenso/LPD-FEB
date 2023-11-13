@@ -48,10 +48,11 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
             <div class="card-body">
               <?php
               include "../config/koneksi.php";
+              $id_user = $_SESSION['id_user'];
               $sql = mysqli_query($koneksi, "SELECT * 
               FROM biaya AS bi 
               JOIN semua_laporan AS sl ON bi.id_biaya = sl.id_biaya
-              JOIN laporan AS lp ON lp.id_laporan = sl.id_laporan;");
+              JOIN laporan AS lp ON lp.id_laporan = sl.id_laporan WHERE sl.id_user = '$id_user'");
               ?>
               <table id="example1" class="table table-bordered table-stripped">
                 <thead>

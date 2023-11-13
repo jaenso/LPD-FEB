@@ -68,65 +68,39 @@ if (empty($_SESSION['username']) && empty($_SESSION['PASSWORD'])) {
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+<?php
+$currentMonth = date('m');
+$query = "SELECT id_iku, COUNT(*) AS jumlah_laporan 
+        FROM laporan 
+        WHERE MONTH(tgl_kunjungan) = $currentMonth
+        GROUP BY id_iku";
+$result = mysqli_query($koneksi, $query);
+
+$labels = [];
+$data = [];
+
+while ($row = mysqli_fetch_assoc($result)) {
+    $labels[] = "IKU " . $row['id_iku'];
+    $data[] = $row['jumlah_laporan'];
+}
+?>
+
 <script>
     const ctx = document.getElementById('grafik');
+    const currentMonth = new Date().toLocaleString('en-US', {
+        month: 'long'
+    });
+    const currentYear = new Date().getFullYear();
+    const labels = <?= json_encode($labels) ?>;
+    const updatedLabels = labels.map(label => label + ' Bulan ' + currentMonth + ' ' + currentYear);
 
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['IKU 1',
-                'IKU 2',
-                'IKU 3',
-                'IKU 4',
-                'IKU 5',
-                'IKU 6',
-                'IKU 7',
-                'IKU 8'
-            ],
+            labels: updatedLabels,
             datasets: [{
                 label: 'Data',
-                data: [
-                    <?php
-                    $query = "SELECT * FROM laporan WHERE id_iku = 1";
-                    $iku1 = mysqli_query($koneksi, $query);
-                    echo mysqli_num_rows($iku1)
-                    ?>,
-                    <?php
-                    $query = "SELECT * FROM laporan WHERE id_iku = 2";
-                    $iku2 = mysqli_query($koneksi, $query);
-                    echo mysqli_num_rows($iku2)
-                    ?>,
-                    <?php
-                    $query = "SELECT * FROM laporan WHERE id_iku = 3";
-                    $iku3 = mysqli_query($koneksi, $query);
-                    echo mysqli_num_rows($iku3)
-                    ?>,
-                    <?php
-                    $query = "SELECT * FROM laporan WHERE id_iku = 4";
-                    $iku4 = mysqli_query($koneksi, $query);
-                    echo mysqli_num_rows($iku4)
-                    ?>,
-                    <?php
-                    $query = "SELECT * FROM laporan WHERE id_iku = 5";
-                    $iku5 = mysqli_query($koneksi, $query);
-                    echo mysqli_num_rows($iku5)
-                    ?>,
-                    <?php
-                    $query = "SELECT * FROM laporan WHERE id_iku = 6";
-                    $iku6 = mysqli_query($koneksi, $query);
-                    echo mysqli_num_rows($iku6)
-                    ?>,
-                    <?php
-                    $query = "SELECT * FROM laporan WHERE id_iku = 7";
-                    $iku7 = mysqli_query($koneksi, $query);
-                    echo mysqli_num_rows($iku7)
-                    ?>,
-                    <?php
-                    $query = "SELECT * FROM laporan WHERE id_iku = 8";
-                    $iku8 = mysqli_query($koneksi, $query);
-                    echo mysqli_num_rows($iku8)
-                    ?>
-                ],
+                data: <?= json_encode($data) ?>,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(255, 159, 64, 0.2)',
@@ -150,6 +124,7 @@ if (empty($_SESSION['username']) && empty($_SESSION['PASSWORD'])) {
         },
     });
 </script>
+
 
 <?php
 include "../Komponen_Website/footer.php";
