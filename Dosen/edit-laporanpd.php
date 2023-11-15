@@ -128,7 +128,31 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
                       <label>Relevansi Umum (Value)</label>
                       <input type="text" name="relevansi_umum" class="form-control" value="<?php echo $relevansi_umum; ?>">
                     </div>
-
+                    <div class="col-lg-6 mt-2">
+                      <label>Kota</label>
+                      <select class="select2" name="id_kota" id="kota" style="width: 100%;" required>
+                        <option value="">Pilih Kota</option>
+                        <?php
+                        $query = "SELECT * FROM kota ORDER BY kota ASC";
+                        $result = mysqli_query($koneksi, $query);
+                        while ($row = mysqli_fetch_assoc($result)) {
+                          echo '<option value="' . $row['id'] . '">' . $row['kota'] . '</option>';
+                        }
+                        ?>
+                      </select>
+                    </div>
+                    <div class="col-lg-6 mt-2">
+                      <label>Nama Yang Ditugaskan</label>
+                      <select class="select2" name="nama_yang_ditugaskan[]" style="width: 100%;" multiple>
+                        <?php
+                        $query = "SELECT * FROM user";
+                        $result = mysqli_query($koneksi, $query);
+                        while ($row = mysqli_fetch_assoc($result)) {
+                          echo '<option value="' . $row['nama'] . '">' . $row['nama'] . '</option>';
+                        }
+                        ?>
+                      </select>
+                    </div>
                   </div>
                 </div>
 
@@ -164,25 +188,6 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <div class="row">
-
-                    <div class="col-lg-6">
-                      <label>Nama Yang Ditugaskan</label>
-                      <select class="select2" name="nama_yang_ditugaskan[]" style="width: 100%;" multiple>
-                        <?php
-                        $query = "SELECT * FROM user";
-                        $result = mysqli_query($koneksi, $query);
-                        while ($row = mysqli_fetch_assoc($result)) {
-                          echo '<option value="' . $row['nama'] . '">' . $row['nama'] . '</option>';
-                        }
-                        ?>
-                      </select>
-                    </div>
-
-                  </div>
-                </div>
-
                 <br></br>
 
                 <div class="card-footer">
@@ -200,7 +205,6 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-
 <?php
 include "../Komponen_Website/footer.php";
 ?>

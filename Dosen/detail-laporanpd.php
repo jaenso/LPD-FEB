@@ -55,7 +55,7 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
                         <?php
                         include "../config/koneksi.php";
                         $id_laporan = $_GET['id_laporan'];
-                        $sql = mysqli_query($koneksi, "SELECT * FROM laporan JOIN iku_feb ON laporan.`id_iku` = iku_feb.`id_iku` WHERE id_laporan='$id_laporan'");
+                        $sql = mysqli_query($koneksi, "SELECT * FROM laporan JOIN iku_feb ON laporan.`id_iku` = iku_feb.`id_iku` JOIN kota ON laporan.id_kota = kota.id WHERE id_laporan='$id_laporan'");
                         ?>
                         <div class="card-body">
                             <?php
@@ -73,7 +73,7 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
                                         </tr>
                                         <tr>
                                             <td><b>Tempat Tujuan</b></td>
-                                            <td><?php echo $data['tempat_tujuan'] ?></td>
+                                            <td><?= $data['kota'] ?>, <?= $data['tempat_tujuan'] ?></td>
                                         </tr>
                                         <tr>
                                             <td><b>Nomor Surat Tugas</b></td>

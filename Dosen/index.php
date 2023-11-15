@@ -71,7 +71,7 @@ if (empty($_SESSION['username']) && empty($_SESSION['PASSWORD'])) {
               <p>Laporan Perjalanan Dinas</p>
             </div>
             <div class="icon">
-              <i class="nav-icon fas fa-envelope"></i>
+              <i class="nav-icon fas fa-plane"></i>
             </div>
             <a href="kelola-laporanpd.php" class="small-box-footer">Info lebih lanjut <i class="fas fa-arrow-circle-right"></i></a>
           </div>
@@ -90,7 +90,7 @@ if (empty($_SESSION['username']) && empty($_SESSION['PASSWORD'])) {
               <p>Surat Pertanggung Jawaban</p>
             </div>
             <div class="icon">
-              <i class="nav-icon fas fa-envelope-open"></i>
+              <i class="nav-icon fas fa-book"></i>
             </div>
             <a href="kelola-biayapd.php" class="small-box-footer">Info lebih lanjut <i class="fas fa-arrow-circle-right"></i></a>
           </div>

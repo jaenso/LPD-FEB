@@ -7,6 +7,7 @@
   <title>Sistem Pengelolaan Surat Perjalanan Dinas</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../Assets_Halaman/">
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -63,7 +64,9 @@
             <i class="fas fa-user-circle fa-lg"></i> <?php echo $data['nama'] ?>
           </a>
           <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-
+            <a type="button" data-toggle="modal" data-target="#ubah_password" class="dropdown-item">
+              <i class="fas fa-key mr-2"></i> Ubah Password
+            </a>
             <a href="../Login/logout.php" class="dropdown-item">
               <i class="fas fa-sign-out-alt mr-2"></i> Log Out
             </a>
@@ -71,6 +74,33 @@
         </li>
       </ul>
     </nav>
+
+    <div class="modal fade" id="ubah_password" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Data Akun</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="proses-edit-akun.php" method="post">
+            <div class="modal-body">
+              <label>Username</label>
+              <input type="text" name="username" class="form-control" required>
+              <label>Nama</label>
+              <input type="text" name="nama" class="form-control" required>
+              <label>Ubah Password</label>
+              <input type="text" name="password" class="form-control" required>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+              <button type="submit" class="btn btn-primary">Ubah</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
 
     <!-- /.navbar -->

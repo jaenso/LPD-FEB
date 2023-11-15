@@ -13,7 +13,7 @@ if (mysqli_connect_errno()) {
 }
 if (isset($_GET['id_laporan'])) {
     $id_laporan = $_GET['id_laporan'];
-    $sql = mysqli_query($koneksi, "SELECT * FROM laporan lpr JOIN iku_feb iku ON lpr.id_iku = iku.id_iku WHERE lpr.id_laporan='$id_laporan'");
+    $sql = mysqli_query($koneksi, "SELECT * FROM laporan lpr JOIN iku_feb iku ON lpr.id_iku = iku.id_iku JOIN kota ON lpr.id_kota = kota.id WHERE lpr.id_laporan='$id_laporan'");
 
     $cover = 'Hello World';
 
@@ -41,7 +41,7 @@ if (isset($_GET['id_laporan'])) {
         <tr>
             <td>Tempat Tujuan</td>
             <td>:</td>
-            <td>' . $lpr['tempat_tujuan'] . '</td>
+            <td>' . $lpr['kota'] . ', ' . $lpr['tempat_tujuan'] . '</td>
         </tr>
         <tr>
             <td>No. Surat Tugas</td>

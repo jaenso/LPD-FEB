@@ -86,9 +86,31 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
                       <label>Tempat Tujuan</label>
                       <input type="text" class="form-control" name="tempat_tujuan" required autocomplete="off" placeholder="Masukkan Tempat Tujuan">
                     </div>
+
                     <div class="col-lg-6">
+                      <label>Provinsi</label>
+                      <select class="select2" name="provinsi" id="provinsi" style="width: 100%;" required>
+                        <option value="">Tambah Provinsi</option>
+                        <?php
+                        $query = "SELECT * FROM provinsi ORDER BY provinsi ASC";
+                        $result = mysqli_query($koneksi, $query);
+                        while ($row = mysqli_fetch_assoc($result)) {
+                          echo '<option value="' . $row['id'] . '">' . $row['provinsi'] . '</option>';
+                        }
+                        ?>
+                      </select>
+                    </div>
+                    <div class="col-lg-6 mt-3">
                       <label>Relevansi Umum (Value)</label>
                       <input type="text" name="relevansi_umum" class="form-control" autocomplete="off" placeholder="Masukkan Relevansi Umum (Value)" required>
+                    </div>
+                    <div class="col-lg-6 mt-2">
+                      <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#tambah_kota">
+                        Kota
+                      </button>
+                      <select class="select2" name="id_kota" id="kota" style="width: 100%;" required>
+                        <option value="">Pilih Kota</option>
+                      </select>
                     </div>
                   </div>
                 </div>
@@ -143,12 +165,68 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
                 <button type="submit" class="btn btn-info nav-icon fas fa-arrow-right"> Selanjutnya</button>
               </div>
             </form>
+            <div class="modal fade" id="tambah_kota" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Kota di dalam Provinsi</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <form action="proses-tambah-kota.php" method="post">
+                    <div class="modal-body">
+                      <label>Provinsi</label>
+                      <select class="select2" name="id_provinsi" id="provinsi1" style="width: 100%;" required>
+                        <option value="">Tambah Provinsi</option>
+                        <?php
+                        $query = "SELECT * FROM provinsi ORDER BY provinsi ASC";
+                        $result = mysqli_query($koneksi, $query);
+                        while ($row = mysqli_fetch_assoc($result)) {
+                          echo '<option value="' . $row['id'] . '">' . $row['provinsi'] . '</option>';
+                        }
+                        ?>
+                      </select>
+                      <label>Kota</label>
+                      <input type="text" name="kota" class="form-control" autocomplete="off" placeholder="Masukkan Kota" required>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                      <button type="submit" class="btn btn-primary">Tambah</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#provinsi').change(function() {
+      var provinsiId = $(this).val();
+
+      $.ajax({
+        type: 'POST',
+        url: 'get_kota.php',
+        data: {
+          provinsi_id: provinsiId
+        },
+        dataType: 'json',
+        success: function(data) {
+          $('#kota').empty();
+          $.each(data, function(key, value) {
+            $('#kota').append('<option value="' + value.id + '">' + value.kota + '</option>');
+          });
+        }
+      });
+    });
+  });
+</script>
 
 <?php
 include "../Komponen_Website/footer.php";

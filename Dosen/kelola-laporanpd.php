@@ -50,7 +50,7 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
               <?php
               include "../config/koneksi.php";
               $id_user = $_SESSION['id_user'];
-              $sql = mysqli_query($koneksi, "SELECT * FROM laporan WHERE id_user = '$id_user'");
+              $sql = mysqli_query($koneksi, "SELECT * FROM laporan JOIN kota ON laporan.id_kota = kota.id WHERE id_user = '$id_user'");
               ?>
               <table id="example1" class="table table-bordered table-stripped">
                 <thead>
@@ -76,7 +76,7 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
                       <td><?php echo $no++ ?></td>
                       <td><?php echo $tgl_kunjungan; ?></td>
                       <td><?php echo $tgl_selesai; ?></td>
-                      <td><?php echo $row['tempat_tujuan']; ?></td>
+                      <td><?= $row['tempat_tujuan']; ?>, <?= $row['kota']; ?></td>
                       <td><?php echo $row['no_surat_tugas']; ?></td>
                       <td><?php echo $row['sumber_dana']; ?></td>
                       <td><?php echo $row['nama_yang_ditugaskan']; ?></td>
