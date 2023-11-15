@@ -64,7 +64,7 @@
             <i class="fas fa-user-circle fa-lg"></i> <?php echo $data['nama'] ?>
           </a>
           <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-            <a type="button" data-toggle="modal" data-target="#ubah_password" class="dropdown-item">
+            <a type="button" data-toggle="modal" data-target="#ubah_password<?= $data['username'] ?>" class="dropdown-item">
               <i class="fas fa-key mr-2"></i> Ubah Password
             </a>
             <a href="../Login/logout.php" class="dropdown-item">
@@ -75,7 +75,7 @@
       </ul>
     </nav>
 
-    <div class="modal fade" id="ubah_password" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="ubah_password<?= $data['username'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -86,12 +86,13 @@
           </div>
           <form action="proses-edit-akun.php" method="post">
             <div class="modal-body">
+              <input type="hidden" name="id_user" value="<?= $data['id_user'] ?>">
               <label>Username</label>
-              <input type="text" name="username" class="form-control" required>
+              <input type="text" name="username" class="form-control" value="<?= $data['username'] ?>" disabled>
               <label>Nama</label>
-              <input type="text" name="nama" class="form-control" required>
+              <input type="text" name="nama" class="form-control" value="<?= $data['nama'] ?>" disabled>
               <label>Ubah Password</label>
-              <input type="text" name="password" class="form-control" required>
+              <input type="password" name="password" class="form-control">
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
