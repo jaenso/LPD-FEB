@@ -59,7 +59,7 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
               include "../config/koneksi.php";
               $id_user = $_SESSION['id_user'];
               $sql = mysqli_query($koneksi, "SELECT * FROM biaya
-                    WHERE id_user = '$id_user'");
+                    WHERE id_user = '$id_user' GROUP BY id_biaya DESC");
               ?>
               <table id="example1" class="table table-bordered table-stripped">
                 <thead>

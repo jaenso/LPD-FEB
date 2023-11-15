@@ -52,7 +52,7 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
               $sql = mysqli_query($koneksi, "SELECT * 
               FROM biaya AS bi 
               JOIN semua_laporan AS sl ON bi.id_biaya = sl.id_biaya
-              JOIN laporan AS lp ON lp.id_laporan = sl.id_laporan WHERE sl.id_user = '$id_user'");
+              JOIN laporan AS lp ON lp.id_laporan = sl.id_laporan WHERE sl.id_user = '$id_user' GROUP BY id_semua_laporan DESC");
               ?>
               <table id="example1" class="table table-bordered table-stripped">
                 <thead>

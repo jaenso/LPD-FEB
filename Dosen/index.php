@@ -139,7 +139,7 @@ if (empty($_SESSION['username']) && empty($_SESSION['PASSWORD'])) {
           <div class="swiper mySwiper">
             <div class="swiper-wrapper">
               <?php
-              $sql = mysqli_query($koneksi, "SELECT * FROM berita");
+              $sql = mysqli_query($koneksi, "SELECT * FROM berita GROUP BY id_berita DESC");
               while ($row = mysqli_fetch_array($sql)) {
               ?>
                 <div class="swiper-slide">

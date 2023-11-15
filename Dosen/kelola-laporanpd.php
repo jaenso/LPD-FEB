@@ -50,7 +50,7 @@ if (empty($_SESSION['username']) and empty($_SESSION['PASSWORD'])) {
               <?php
               include "../config/koneksi.php";
               $id_user = $_SESSION['id_user'];
-              $sql = mysqli_query($koneksi, "SELECT * FROM laporan JOIN kota ON laporan.id_kota = kota.id WHERE id_user = '$id_user'");
+              $sql = mysqli_query($koneksi, "SELECT * FROM laporan JOIN kota ON laporan.id_kota = kota.id WHERE id_user = '$id_user' GROUP BY id_laporan DESC");
               ?>
               <table id="example1" class="table table-bordered table-stripped">
                 <thead>
